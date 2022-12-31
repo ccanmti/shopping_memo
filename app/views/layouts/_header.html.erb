@@ -1,0 +1,22 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <%= link_to "Home",root_path, class:"navbar-brand" %>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <% if user_signed_in? %>
+        <%= link_to "マイページ",my_page_path, class:"nav-item nav-link" %>
+        <%= link_to "ログアウト",destroy_user_session_path, class:"nav-item nav-link", method: :delete %>
+      <% elsif admin_signed_in? %>
+        <%= link_to "ジャンル",admin_genres_path, class:"nav-item nav-link" %>
+        <%= link_to "素材",admin_items_path, class:"nav-item nav-link" %>
+        <%= link_to "レシピ",admin_recipes_path, class:"nav-item nav-link" %>
+        <%= link_to "ログアウト",destroy_admin_session_path, class:"nav-item nav-link", method: :delete %>
+      <% else %>
+        <%= link_to "新規登録",new_user_registration_path, class:"nav-item nav-link" %>
+        <%= link_to "ログイン",user_session_path, class:"nav-item nav-link" %>
+      <% end %>
+    </div>
+  </div>
+</nav>

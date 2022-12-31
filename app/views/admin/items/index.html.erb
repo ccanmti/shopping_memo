@@ -1,0 +1,23 @@
+<h1>素材一覧・新規登録</h1>
+
+<%= form_with model: @item, url: admin_items_path do |f| %>
+<%= f.text_field :name, class: 'form-control', required: true %>
+<%= f.hidden_field :admin_id, :value => current_admin.id %>
+<%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name),prompt: "-- 選択してください --" %>
+<%= f.submit "新規登録", class:"btn btn-success" %>
+<% end %>
+
+<table class = "table">
+  <tr>
+    <th>素材</th>
+    <th>ジャンル名</th>
+  </tr>
+  <% @items.each do |item| %>
+  <tr>
+    <th><%= item.name %></th>
+    <th><%= item.genre.name %></th>
+    <th><%= link_to "編集",edit_admin_item_path(item.id),class: "btn btn-success" %></th>
+    <th><%= link_to "削除",admin_item_path(item.id), class: "btn btn-danger", method: :delete %></th>
+  </tr>
+  <% end %>
+</table>

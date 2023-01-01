@@ -1,0 +1,38 @@
+<h1 class="offset-1">レシピの編集</h1>
+    <%= form_with model: @recipe, url: admin_recipes_path do |f| %>
+    <table class = "table offset-1 col-4">
+      <tr>
+        <th>レシピ名</th>
+        <th><%= f.text_field :name, class: 'form-control', required: true %></th>
+      </tr>
+      <tr>
+        <th>素材名</th>
+        <th>数量</th>
+      </tr>
+      <tr>
+        <th><%= f.select :item_id_1, options_from_collection_for_select(Genre.all, :id, :name),prompt: "-- 選択してください --" %></th>
+        <th><%= f.select :amount_1, *[0..10] %></th>
+      </tr>
+      <tr>
+        <th><%= f.select :item_id_2, options_from_collection_for_select(Genre.all, :id, :name),prompt: "-- 選択してください --" %></th>
+        <th><%= f.select :amount_2, *[0..10] %></th>
+      </tr>
+      <tr>
+        <th><%= f.select :item_id_3, options_from_collection_for_select(Genre.all, :id, :name),prompt: "-- 選択してください --" %></th>
+        <th><%= f.select :amount_3, *[0..10] %></th>
+      </tr>
+      <tr>
+        <th><%= f.select :item_id_4, options_from_collection_for_select(Genre.all, :id, :name),prompt: "-- 選択してください --" %></th>
+        <th><%= f.select :amount_4, *[0..10] %></th>
+      </tr>
+      <tr>
+        <th><%= f.select :item_id_5, options_from_collection_for_select(Genre.all, :id, :name),prompt: "-- 選択してください --" %></th>
+        <th><%= f.select :amount_5, *[0..10] %></th>
+      </tr>
+      <tr>
+        <th></th>
+        <th><%= f.submit "作成", class: "btn btn-success" %></th>
+      </tr>
+      <%= f.hidden_field :admin_id, :value => current_admin.id %>
+    </table>
+    <% end %>

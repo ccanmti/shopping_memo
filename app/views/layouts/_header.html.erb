@@ -7,6 +7,8 @@
     <div class="navbar-nav">
       <% if user_signed_in? %>
         <%= link_to "マイページ",my_page_path, class:"nav-item nav-link" %>
+        <%= link_to "my memo",my_page_path, class:"nav-item nav-link" %>
+        <%= link_to "レシピ",recipes_path, class:"nav-item nav-link" %>
         <%= link_to "ログアウト",destroy_user_session_path, class:"nav-item nav-link", method: :delete %>
       <% elsif admin_signed_in? %>
         <%= link_to "ジャンル",admin_genres_path, class:"nav-item nav-link" %>
